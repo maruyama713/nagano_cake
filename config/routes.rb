@@ -4,8 +4,15 @@ Rails.application.routes.draw do
   registrations: "public/registrations",
   sessions: 'public/sessions'
   }
-  root to: "homes#top"
+  root to: "public/homes#top"
   get 'home/about' => 'homes#about', as: 'about'
+  
+  get 'customers/my_page' => 'public/customers#show'
+  get 'customers/information/edit' => 'public/customers#edit'
+  patch 'customers/my_page' => 'public/customers#update'
+  get 'customers/confirmation' => 'public/customers#confirmation'
+  patch 'customers/withdrawal' => 'public/customers#withdrawal'
+  
   resources :items, only: [:index, :show]
 
   # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html
