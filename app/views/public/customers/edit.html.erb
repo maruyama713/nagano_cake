@@ -1,1 +1,55 @@
+<div class="container">
+  <div class="row">
+    <div class="mr-auto">
 <h1>登録情報編集画面</h1>
+
+<%= form_with model:  @customer,url: customers_my_page_path do |f| %>
+  <div class="field">
+        <%= f.label :性 %><br>
+        <%= f.text_field :last_name %>
+      </div>
+
+      <div class="field">
+        <%= f.label :名 %><br>
+        <%= f.text_field :first_name %>
+      </div>
+
+      <div class="field">
+        <%= f.label :性カナ %><br>
+        <%= f.text_field :last_name_kana %>
+      </div>
+
+      <div class="field">
+        <%= f.label :名カナ %><br>
+        <%= f.text_field :first_name_kana %>
+      </div>
+
+      <div class="field">
+        <%= f.label :郵便番号 %><br>
+        <%= f.text_field :postal_code %>
+      </div>
+
+      <div class="field">
+        <%= f.label :住所 %><br>
+        <%= f.text_field :address %>
+      </div>
+
+      <div class="field">
+        <%= f.label :電話番号 %><br>
+        <%= f.text_field :telephone_number %>
+      </div>
+
+      <div class="field">
+        <%= f.label :メールアドレス %><br />
+        <%= f.email_field :email, autofocus: true, autocomplete: "email" %>
+      </div>
+
+  <%= f.submit "変更を保存" %>
+  
+  <div>
+      <%= link_to "退会する", '/customers/confirmation' %>
+  </div>
+<% end %>
+   </div>
+  </div>
+</div>

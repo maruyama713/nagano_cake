@@ -5,7 +5,7 @@ Rails.application.routes.draw do
   sessions: 'public/sessions'
   }
   root to: "public/homes#top"
-  get 'home/about' => 'public/homes#about', as: 'about'
+  get '/about' => 'public/homes#about', as: 'about'
 
   get 'customers/my_page' => 'public/customers#show'
   get 'customers/information/edit' => 'public/customers#edit'
