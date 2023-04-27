@@ -13,7 +13,7 @@ Rails.application.routes.draw do
   get 'customers/confirmation' => 'public/customers#confirmation'
   patch 'customers/withdrawal' => 'public/customers#withdrawal'
 
-  resources :items, only: [:index, :show]
+
 
   # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html
 
@@ -21,6 +21,7 @@ Rails.application.routes.draw do
   devise_for :admins, skip: [:registrations, :passwords], controllers: {
     sessions: "admin/sessions"
   }
+  get '/admin' => 'admin/homes#top'
   resources :items
 
 end
