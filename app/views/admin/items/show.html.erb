@@ -1,0 +1,20 @@
+<h1>商品詳細</h1>
+
+  <table>
+    <tbody>
+      <tr>
+        <th>商品名</th>
+        <th><%= @item.name %></th>
+      </tr>
+      <tr>
+        <th>商品説明</th>
+        <th><%= @item.introduction %></th>
+      </tr>
+      <tr>
+        <th>税込価格<br>
+            （税抜き価格）</th>
+        <th><%= @item.price %><%= @item.price %></th>
+      </tr>
+    </tbody>
+  </table>
+  <%= link_to "編集する",  edit_item_path %>
