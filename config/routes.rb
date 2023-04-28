@@ -13,7 +13,7 @@ Rails.application.routes.draw do
   get 'customers/confirmation' => 'public/customers#confirmation'
   patch 'customers/withdrawal' => 'public/customers#withdrawal'
 
-
+  resources :items, only: [:index, :show]
 
   # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html
 
