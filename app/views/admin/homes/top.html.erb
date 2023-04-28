@@ -1,6 +1,9 @@
 <h1>注文履歴一覧</h1>
 
-      <table>
+<div class="container">
+  <div class="row">
+    <div class="mx-auto">
+      <table class="table">
         <thead>
           <tr>
             <th>購入日時</th>
@@ -9,7 +12,15 @@
           </tr>
         </thead>
         <tbody>
+
           <tr>
-            <td></td>
+            <td><%= link_to order_path(order.customer.id) do %><% end %></td>
+            <td><%= @customer.last_name %><%= @customer.first_name %></td>
+            <td><%= @orders.amount %></td>
           </tr>
+
         </tbody>
+      </table>
+    </div>
+  </div>
+</div>

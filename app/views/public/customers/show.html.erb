@@ -3,20 +3,20 @@
   <div class="row">
     <div class="mx-auto">
       <h1>登録情報</h1>
-        <%= form_with model: @customer do |f| %>
-        <span>
+
+        <div>
           <%= link_to '登録情報編集画面', "/customers/information/edit" %>
-        </span>
+        </div>
           <table class="table">
           <tbody>
             <tr></tr>
             <tr>
               <th>氏名</th>
-              <th><%= @customer.name %></th>
+              <th><%= @customer.last_name %><%= @customer.first_name %></th>
             </tr>
             <tr>
               <th>カナ</th>
-              <th><%= @customer.name_kana %></th>
+              <th><%= @customer.last_name_kana %><%= @customer.first_name_kana %></th>
             </tr>
             <tr>
               <th>郵便番号</th>
@@ -43,4 +43,3 @@
   <div>
       <%= link_to "一覧を見る", '/orders' %>
   </div>
-<% end %>
