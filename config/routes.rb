@@ -33,7 +33,7 @@ Rails.application.routes.draw do
     sessions: "admin/sessions"
   }
   namespace :admin do
-    get '/admin' => 'admin/homes#top'
+    root to: 'homes#top'
 
     resources :items, only: [:new, :index, :show, :edit, :update, :create]
 
