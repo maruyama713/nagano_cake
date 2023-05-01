@@ -1,9 +1,20 @@
 <div class="container">
   <div class="row">
     <div class="mr-auto">
-      <h2>Log in</h2>
+      <h2>ログイン</h2>
+    </div>
+  </div>
+</div>
 
+<div class="container">
+  <div class="row">
+    <div class="mr-auto">
       <%= form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
+      <table>
+        <tbody>
+          <tr>
+            <td>名前</td>
+            <td></td>
         <div class="field">
           <%= f.label :メールアドレス %><br />
           <%= f.email_field :email, autofocus: true, autocomplete: "email" %>

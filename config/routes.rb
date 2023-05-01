@@ -23,11 +23,15 @@ Rails.application.routes.draw do
   delete 'cart_items/:id' => 'public/cart_items#destroy'
   delete 'cart_items/destroy_all' => 'public/cart_items#destroy_all'
   post 'cart_items' => 'public/cart_items#create'
-
-
+  
+  get 'orders/new' => 'public/orders#new'
+  post 'orders/confirmation' => 'public/orders#confirmation'
+  get 'orders/complete' => 'public/orders#complete'
+  post 'orders/thanks' => 'public/orders#thanks'
+  get 'orders' => 'public/orders#index'
+  get 'orders/:id' => 'public/orders#show'
 
   # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html
-
 
   devise_for :admin, skip: [:registrations, :passwords], controllers: {
     sessions: "admin/sessions"
@@ -38,5 +42,7 @@ Rails.application.routes.draw do
     resources :items, only: [:new, :index, :show, :edit, :update, :create]
 
     resources :customers, only: [:index, :show, :edit, :update]
+    
+    get 'orders/:id' => 'orders#show'
   end
 end

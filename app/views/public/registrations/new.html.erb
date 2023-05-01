@@ -1,70 +1,69 @@
 <div class="container">
   <div class="row">
     <div class="mr-auto">
-      <h2>Sign up</h2>
+      <h2>新規会員登録</h2>
+    </div>
+  </div>
+</div>
 
+<div class="container">
+  <div class="row">
+    <div class="mr-auto">
       <%= form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f| %>
       <%= render "public/shared/error_messages", resource: resource %>
-
-      <div class="field">
-        <%= f.label :性 %><br>
-        <%= f.text_field :last_name %>
-      </div>
-
-      <div class="field">
-        <%= f.label :名 %><br>
-        <%= f.text_field :first_name %>
-      </div>
-
-      <div class="field">
-        <%= f.label :性カナ %><br>
-        <%= f.text_field :last_name_kana %>
-      </div>
-
-      <div class="field">
-        <%= f.label :名カナ %><br>
-        <%= f.text_field :first_name_kana %>
-      </div>
-
-      <div class="field">
-        <%= f.label :郵便番号 %><br>
-        <%= f.text_field :postal_code %>
-      </div>
-
-      <div class="field">
-        <%= f.label :住所 %><br>
-        <%= f.text_field :address %>
-      </div>
-
-      <div class="field">
-        <%= f.label :電話番号 %><br>
-        <%= f.text_field :telephone_number %>
-      </div>
-
-      <div class="field">
-        <%= f.label :メールアドレス %><br />
-        <%= f.email_field :email, autofocus: true, autocomplete: "email" %>
-      </div>
-
-      <div class="field">
-        <%= f.label :パスワード %>
-        <% if @minimum_password_length %>
-          <em>(<%= @minimum_password_length %> characters minimum)</em>
-        <% end %><br />
-        <%= f.password_field :password, autocomplete: "new-password" %>
-      </div>
-
-      <div class="field">
-        <%= f.label :パスワード確認 %><br />
-        <%= f.password_field :password_confirmation, autocomplete: "new-password" %>
-      </div>
-
-      <div class="actions">
-        <%= f.submit "Sign up" %>
-      </div>
+      <table>
+        <tbody>
+          <tr>
+            <td>名前</td>
+            <td>(性)<%= f.text_field :last_name %> (名)<%= f.text_field :first_name %></td>
+          </tr>
+          <tr>
+            <td>フリガナ</td>
+            <td>(セイ)<%= f.text_field :last_name_kana %> (メイ)<%= f.text_field :first_name_kana %></td>
+          </tr>
+          <tr>
+            <td>メールアドレス</td>
+            <td><%= f.email_field :email, autofocus: true, autocomplete: "email" %></td>
+          </tr>
+          <tr>
+            <td>郵便番号(ハイフンなし)</td>
+            <td><%= f.text_field :postal_code %></td>
+          </tr>
+          <tr>
+            <td>住所</td>
+            <td><%= f.text_field :address %></td>
+          </tr>
+          <tr>
+            <td>電話番号(ハイフンなし)</td>
+            <td><%= f.text_field :telephone_number %></td>
+          </tr>
+          <tr>
+            <td>パスワード<% if @minimum_password_length %>
+                <em>(<%= @minimum_password_length %>文字以上)</em><% end %></td>
+            <td><%= f.password_field :password, autocomplete: "new-password" %></td>
+          </tr>
+          <tr>
+            <td>パスワード(確認用)</td>
+            <td><%= f.password_field :password_confirmation, autocomplete: "new-password" %></td>
+          </tr>
+          <tr>
+            <td></td>
+            <td><%= f.submit "新規登録" %></td>
+          </tr>
+        </tbody>
+      </table>
       <% end %>
+    </div>
+  </div>
+</div>
 
-      <%= render "public/shared/links" %>
+<div class="container">
+  <div class="row">
+    <div class="mr-auto">
+      <h2>既に登録済みの方</h2>
+        <div>
+          <h3><%= link_to "こちら", new_customer_session_path %> からログインしてください。</h3>
+        </div>
     </div>
   </div>
 </div>
