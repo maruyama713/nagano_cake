@@ -1,55 +1,43 @@
 <div class="container">
   <div class="row">
     <div class="mr-auto">
-<h1>会員情報編集</h1>
+      <h1>会員情報編集</h1>
 
-<%= form_with model:  @customer,url: customers_my_page_path do |f| %>
-  <div class="field">
-        <%= f.label :性 %><br>
-        <%= f.text_field :last_name %>
-      </div>
-
-      <div class="field">
-        <%= f.label :名 %><br>
-        <%= f.text_field :first_name %>
-      </div>
-
-      <div class="field">
-        <%= f.label :性カナ %><br>
-        <%= f.text_field :last_name_kana %>
-      </div>
-
-      <div class="field">
-        <%= f.label :名カナ %><br>
-        <%= f.text_field :first_name_kana %>
-      </div>
-
-      <div class="field">
-        <%= f.label :郵便番号 %><br>
-        <%= f.text_field :postal_code %>
-      </div>
-
-      <div class="field">
-        <%= f.label :住所 %><br>
-        <%= f.text_field :address %>
-      </div>
-
-      <div class="field">
-        <%= f.label :電話番号 %><br>
-        <%= f.text_field :telephone_number %>
-      </div>
-
-      <div class="field">
-        <%= f.label :メールアドレス %><br />
-        <%= f.email_field :email, autofocus: true, autocomplete: "email" %>
-      </div>
-
-  <%= f.submit "編集内容を保存" %>
-
-  <div>
-      <%= link_to "退会する", '/customers/confirmation' %>
-  </div>
-<% end %>
+      <%= form_with model:  @customer,url: customers_my_page_path do |f| %>
+      <table>
+        <tbody>
+          <tr>
+            <td>氏名</td>
+            <td><%= f.text_field :last_name %> <%= f.text_field :first_name %></td>
+          </tr>
+          <tr>
+            <td>フリガナ</td>
+            <td><%= f.text_field :last_name_kana %> <%= f.text_field :first_name_kana %></td>
+          </tr>
+          <tr>
+            <td>郵便番号</td>
+            <td><%= f.text_field :postal_code %></td>
+          </tr>
+          <tr>
+            <td>住所</td>
+            <td><%= f.text_field :address %></td>
+          </tr>
+          <tr>
+            <td>電話番号</td>
+            <td><%= f.text_field :telephone_number %></td>
+          </tr>
+          <tr>
+            <td>メールアドレス</td>
+            <td><%= f.email_field :email, autofocus: true, autocomplete: "email" %></td>
+          </tr>
+          <tr>
+            <td></td>
+            <td><%= f.submit "編集内容を保存" %></td>
+            <td><%= link_to "退会する", '/customers/confirmation' %></td>
+          </tr>
+        </tbody>
+      </table>
+      <% end %>
    </div>
   </div>
 </div>
