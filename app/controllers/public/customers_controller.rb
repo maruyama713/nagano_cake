@@ -13,6 +13,14 @@ class Public::CustomersController < ApplicationController
     @customer.update(customer_params)
     redirect_to customers_my_page_path
   end
+  
+  def withdrawal
+    @user = User.find(params[:id])
+    @user.update(is_deleted: true)
+    reset_session
+    redirect_to root_path
+  end
+
 
    private
 

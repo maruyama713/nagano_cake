@@ -12,11 +12,13 @@ Rails.application.routes.draw do
     get 'items/:id' => 'items#show'
   end
 
-  get 'customers/my_page' => 'public/customers#show'
-  get 'customers/information/edit' => 'public/customers#edit'
-  patch 'customers/my_page' => 'public/customers#update'
-  get 'customers/confirmation' => 'public/customers#confirmation'
-  patch 'customers/withdrawal' => 'public/customers#withdrawal'
+  scope module: :public do
+    get 'customers/my_page' => 'customers#show'
+    get 'customers/information/edit' => 'customers#edit'
+    patch 'customers/my_page' => 'customers#update'
+    get 'customers/confirmation' => 'customers#confirmation'
+    patch 'customers/withdrawal' => 'customers#withdrawal'
+  end
 
   get 'cart_items' => 'public/cart_items#index'
   patch 'cart_items/:id' => 'public/cart_items#update'
