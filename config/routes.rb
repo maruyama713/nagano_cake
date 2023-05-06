@@ -18,13 +18,10 @@ Rails.application.routes.draw do
     patch 'customers/my_page' => 'customers#update'
     get 'customers/confirmation' => 'customers#confirmation'
     patch 'customers/withdrawal' => 'customers#withdrawal'
+    delete 'cart_items/destroy_all' => 'cart_items#destroy_all'
+    resources :cart_items, only: [:index, :update, :destroy, :create]
   end
 
-  get 'cart_items' => 'public/cart_items#index'
-  patch 'cart_items/:id' => 'public/cart_items#update'
-  delete 'cart_items/:id' => 'public/cart_items#destroy'
-  delete 'cart_items/destroy_all' => 'public/cart_items#destroy_all'
-  post 'cart_items' => 'public/cart_items#create'
   
   get 'orders/new' => 'public/orders#new'
   post 'orders/confirmation' => 'public/orders#confirmation'

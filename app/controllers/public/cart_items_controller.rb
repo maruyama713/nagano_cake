@@ -1,15 +1,15 @@
 class Public::CartItemsController < ApplicationController
   def index
-    @cart_item = cart_item_params[:item_id]
+    @cart_item = current_customer.cart_items
   end
 
   def create
     @cart_item = CartItem.new(cart_item_params)
-    @cart_item.customer_id = current_user.id
-    if @catt_item.save
-    redirect_to items_path(@item.id)
+    @cart_item.customer_id = current_customer.id
+    if @cart_item.save
+    redirect_to cart_items_path
     else
-      render :show
+      render :index
     end
   end
 
