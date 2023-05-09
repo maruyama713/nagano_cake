@@ -21,7 +21,7 @@
           <th></th>
         </thead>
         <tbody>
-        <% @cart_item.each do |cart_item| %>
+        <% @cart_items.each do |cart_item| %>
           <tr>
             <td><%= cart_item.item.name %></td>
             <td><%= cart_item.item.with_tax_price%></td>
@@ -30,6 +30,7 @@
                   <%= f.submit '変更' %>
                 <% end %></td>
             <td><%= cart_item.subtotal%></td>
+                <%# @total +=  cart_item.subtotal %>
             <td><%= link_to '削除', cart_item_path(cart_item.id), method: :delete, "data-confirm" => "本当に削除しますか?" %></td>
           </tr>
         <% end %>
@@ -49,7 +50,7 @@
         <tbody>
           <tr>
             <td>合計金額</td>
-            <td></td>
+            <td><%= @total.round.to_s(:delimited) %></td>
           </tr>
         </tbody>
       </table>
