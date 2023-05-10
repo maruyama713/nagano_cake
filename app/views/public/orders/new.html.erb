@@ -18,7 +18,14 @@
         <% end %>
 
       <h3>お届け先</h3>
-
+        <%= form_with model: @order, url: orders_confirmation_path do |f| %>
+          <%= f.radio_button :addres, "postal_code" %>
+          <%= f.label :current_customer.address, "ご自身の住所" %><br>
+          〒<%= current_customer.postal_code %><%= current_customer.address %><br>
+          <%= current_customer.last_name %><%= current_customer.first_name %>
+        <% end %>
+        
+        
     </div>
   </div>
 </div>
