@@ -19,19 +19,40 @@
 
       <h3>お届け先</h3>
         <%= form_with model: @order, url: orders_confirmation_path do |f| %>
-          <%= f.radio_button :select_addres, Order.select_addreses.key(0) %>
+          <%= f.radio_button :select_address, Order.select_addresses.key(0) %>
           <%= f.label :select_address_my_address, Order.select_addresses_i18n[:my_address] %><br>
-          〒<%= current_customer.postal_code %><%= current_customer.address %><br>
-          <%= current_customer.last_name %><%= current_customer.first_name %><br>
-          <%= f.radio_button :select_addres,  Order.select_addreses.key(1) %>
+            〒<%= current_customer.postal_code %><%= current_customer.address %><br>
+            <%= current_customer.last_name %><%= current_customer.first_name %><br>
+          <%= f.radio_button :select_address,  Order.select_addresses.key(1) %>
           <%= f.label :select_address_registered_address,  Order.select_addresses_i18n[:registered_address] %><br>
-          <%= f.radio_button :select_addres,  Order.select_addreses.key(2) %>
-          
+            <%= f.select :address_id, options_from_collection_for_select(Order.all, :id, :address_display) %><br>
+          <%= f.radio_button :select_address,  Order.select_addresses.key(2) %>
           <%= f.label :select_address_new_address,  Order.select_addresses_i18n[:new_address] %><br>
-          
+            <table class="table">
+              <tbody>
+                <tr>
+                  <td>郵便番号(ハイフンなし)</td>
+                  <td><%= f.text_field :postal_code %></td>
+                </tr>
+                <tr>
+                  <td>住所</td>
+                  <td><%= f.text_field :address %></td>
+                </tr>
+                <tr>
+                  <td>宛名</td>
+                  <td><%= f.text_field :address_name %></td>
+                </tr>
+              </tbody>
+            </table>
         <% end %>
-        
-        
+    </div>
+  </div>
+</div>
+
+<div class="container">
+  <div class="row">
+    <div class="mx-auto">
+      <%= link_to "確認画面へ進む", orders_confirmation_path %>
     </div>
   </div>
 </div>

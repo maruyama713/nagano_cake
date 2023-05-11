@@ -7,5 +7,8 @@ class Order < ApplicationRecord
   enum method_of_payment: { credit_card: 0, transfer: 1 }
 
   enum select_address: { my_address: 0, registered_address: 1, new_address: 2 }
-
+  
+  def address_display
+  '〒' + postal_code + ' ' + address + ' ' + name
+  end
 end
