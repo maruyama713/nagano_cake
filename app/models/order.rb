@@ -4,6 +4,8 @@ class Order < ApplicationRecord
   has_many :order_items, dependent: :destroy
   has_many :items, through: :order_items
 
-  enum payment_method: { credit_card: 0, transfer: 1 }
+  enum method_of_payment: { credit_card: 0, transfer: 1 }
+
+  enum select_address: { my_address: 0, registered_address: 1, new_address: 2 }
 
 end

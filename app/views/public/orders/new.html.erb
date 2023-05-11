@@ -11,18 +11,24 @@
     <div class="mr-auto">
       <h3>支払方法</h3>
         <%= form_with model: @order, url: orders_confirmation_path do |f| %>
-          <%= f.radio_button :payment_method, Order.payment_methods.key(0) %>
-          <%= f.label :payment_method_credit_card, Order.payment_methods_i18n[:credit_card] %><br>
-          <%= f.radio_button :payment_method, Order.payment_methods.key(1) %>
-          <%= f.label :payment_method_transfer, Order.payment_methods_i18n[:transfer]%>
+          <%= f.radio_button :method_of_payment, Order.method_of_payments.key(0) %>
+          <%= f.label :method_of_payment_credit_card, Order.method_of_payments_i18n[:credit_card] %><br>
+          <%= f.radio_button :method_of_payment, Order.method_of_payments.key(1) %>
+          <%= f.label :method_of_payment_transfer, Order.method_of_payments_i18n[:transfer]%>
         <% end %>
 
       <h3>お届け先</h3>
         <%= form_with model: @order, url: orders_confirmation_path do |f| %>
-          <%= f.radio_button :addres, "postal_code" %>
-          <%= f.label :current_customer.address, "ご自身の住所" %><br>
+          <%= f.radio_button :select_addres, Order.select_addreses.key(0) %>
+          <%= f.label :select_address_my_address, Order.select_addresses_i18n[:my_address] %><br>
           〒<%= current_customer.postal_code %><%= current_customer.address %><br>
-          <%= current_customer.last_name %><%= current_customer.first_name %>
+          <%= current_customer.last_name %><%= current_customer.first_name %><br>
+          <%= f.radio_button :select_addres,  Order.select_addreses.key(1) %>
+          <%= f.label :select_address_registered_address,  Order.select_addresses_i18n[:registered_address] %><br>
+          <%= f.radio_button :select_addres,  Order.select_addreses.key(2) %>
+          
+          <%= f.label :select_address_new_address,  Order.select_addresses_i18n[:new_address] %><br>
+          
         <% end %>
         
         

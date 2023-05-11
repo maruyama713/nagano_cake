@@ -4,3 +4,8 @@ ja:
         payment_method:
           credit_card: "クレジットカード"
           transfer: "銀行振込"
+
+        select_address:
+          my_address: "自身の住所"
+          registered_address: "登録済み住所"
+          new_address: "新しいお届け先"
