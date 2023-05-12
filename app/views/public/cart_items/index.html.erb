@@ -24,12 +24,12 @@
         <% @cart_items.each do |cart_item| %>
           <tr>
             <td><%= cart_item.item.name %></td>
-            <td><%= cart_item.item.with_tax_price%></td>
+            <td><%= cart_item.item.with_tax_price %></td>
             <td><%= form_with model: cart_item, url: cart_item_path(cart_item.id), method: :patch do |f| %>
                   <%= f.select :amount, *[1..10] %>
                   <%= f.submit '変更' %>
                 <% end %></td>
-            <td><%= cart_item.subtotal%></td>
+            <td><%= cart_item.subtotal %></td>
                 <%# @total +=  cart_item.subtotal %>
             <td><%= link_to '削除', cart_item_path(cart_item.id), method: :delete, "data-confirm" => "本当に削除しますか?" %></td>
           </tr>
