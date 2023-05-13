@@ -33,7 +33,7 @@
         <tbody>
           <tr>
             <td>送料</td>
-            <td><%= @postage円 %></td>
+            <td><%= @postage %></td>
           </tr>
           <tr>
             <td>商品合計</td>
@@ -41,7 +41,7 @@
           </tr>
           <tr>
             <td>請求金額</td>
-            <td><%= @billing_amount %></td>
+            <td><%= number_with_delimiter(@billing_amount) %></td>
           </tr>
         </tbody>
       </table>
@@ -49,3 +49,21 @@
   </div>
 </div>
 
+<div class="container">
+  <div class="row">
+    <div class="mr-auto">
+      <h2>支払方法</h2>
+        <p><%= order.@method_of_payment %></p>
+      <h2>お届け先</h2>
+        <p><%= order.@select_address %></p>
+    </div>
+  </div>
+</div>
+
+<div class="container">
+  <div class="row">
+    <div class="mx-auto">
+      <%= link_to "注文を確定する", orders_complete_path %>
+    </div>
+  </div>
+</div>
