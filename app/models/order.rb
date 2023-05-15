@@ -11,4 +11,6 @@ class Order < ApplicationRecord
   def address_display
   '〒' + postal_code + ' ' + address + ' ' + name
   end
+
+  attr_accessor:select_address
 end

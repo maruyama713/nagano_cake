@@ -52,10 +52,19 @@
 <div class="container">
   <div class="row">
     <div class="mr-auto">
-      <h2>支払方法</h2>
-        <p><%= @method_of_payment %></p>
-      <h2>お届け先</h2>
-        <p><%= @order %></p>
+      <table>
+        <tbody>
+          <tr>
+            <td><h2>支払方法</h2></td>
+            <td><%= @order.method_of_payment_i18n %></td>
+          </tr>
+          <tr>
+            <td><h2>お届け先</h2></td>
+            <td>〒<%= @order.postal_code %><%= @order.address %><br>
+                <%= @order.address_name %></td>
+          </tr>
+        </tbody>
+      </table>
     </div>
   </div>
 </div>
