@@ -4,7 +4,6 @@ class Public::OrdersController < ApplicationController
   end
 
   def confirmation
-
     @order = Order.new(order_params)
     @cart_items = current_customer.cart_items.all
     @postage = 800
@@ -20,13 +19,20 @@ class Public::OrdersController < ApplicationController
       @order.address = current_customer.address
       @order.address_name = current_customer.last_name + current_customer.first_name
     elsif params[:order][:select_address] == '1'
-      @order.postal_code = params[:postal_code]
-      @order.address = params[:address]
-      @order.address_name = params[:address_name]
+      @order.postal_code = params[:order][:postal_code]
+      @order.address = params[:order][:address]
+      @order.address_name = params[:order][:address_name]
     end
   end
 
+  def thanks
+
+  end
+
   def index
+    @order = Order.new(order_params)
+    @cart_items = current_customer.cart_items.all
+    @billing_amount = @total + @postage
   end
 
   def show

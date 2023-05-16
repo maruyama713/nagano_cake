@@ -21,9 +21,12 @@
         <tbody>
           <tr>
             <td></td>
-            <td></td>
-            <td></td>
-            <td></td>
+            <td>〒<%= @order.postal_code %><%= @order.address %><br>
+                <%= @order.address_name %></td>
+            <td><% @cart_items.each do |cart_item| %>
+                  <%= cart_item.item.name %>
+                <% end %></td>
+            <td><%= number_with_delimiter(@billing_amount) %>円</td>
             <td></td>
             <td><%= link_to "表示する", "/orders/#{orders.id}" %></td>
           </tr>
