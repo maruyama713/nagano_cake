@@ -6,9 +6,9 @@ class Public::OrdersController < ApplicationController
   def confirmation
     @order = Order.new(order_params)
     @cart_items = current_customer.cart_items.all
-    @postage = 800
-    @total = @cart_items.inject(0){|sum,item| sum + item.subtotal}
-    @billing_amount = @total + @postage
+    @order.postage = 800
+    @order_total = @cart_items.inject(0){|sum,item| sum + item.subtotal}
+    @order.billing_amount = @order_total + @order.postage
     if params[:method_of_payment] == "0"
       @method_of_payment = :credit_card
     elsif params[:method_of_payment] == "1"
@@ -26,13 +26,18 @@ class Public::OrdersController < ApplicationController
   end
 
   def thanks
-
+    @order = current_customer.orders.new(order_params)
+    if @order.save
+      redirect_to '/orders/complete'
+    else
+      render :new
+    end
   end
 
   def index
-    @order = Order.new(order_params)
+    @order = current_customer.orders.new(order_params)
     @cart_items = current_customer.cart_items.all
-    @billing_amount = @total + @postage
+    @order.billing_amount = @order_total + @order.postage
   end
 
   def show
@@ -40,6 +45,6 @@ class Public::OrdersController < ApplicationController
 
   private
   def order_params
-    params.require(:order).permit(:select_address, :method_of_payment, :postal_code, :address, :address_name)
+    params.require(:order).permit(:method_of_payment, :postal_code, :address, :address_name, :postage, :billing_amount)
   end
 end

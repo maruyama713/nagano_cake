@@ -9,7 +9,7 @@
 <div class="container px-5 px-sm-0">
   <div class="row">
     <div class="col-md-8 offset-md-1">
-      <%= form_with model: @order_item, url: orders_thanks_path, method: :post do |f| %>
+
       <table class="table">
         <thead>
           <th>商品名</th>
@@ -34,15 +34,15 @@
         <tbody>
           <tr>
             <td>送料</td>
-            <td><%= @postage %></td>
+            <td><%= @order.postage %></td>
           </tr>
           <tr>
             <td>商品合計</td>
-            <td><%= @total.round.to_s(:delimited) %></td>
+            <td><%= @order_total.round.to_s(:delimited) %></td>
           </tr>
           <tr>
             <td>請求金額</td>
-            <td><%= number_with_delimiter(@billing_amount) %></td>
+            <td><%= number_with_delimiter(@order.billing_amount) %></td>
           </tr>
         </tbody>
       </table>
@@ -73,7 +73,14 @@
 <div class="container">
   <div class="row">
     <div class="mx-auto">
-      <%= link_to "注文を確定する", orders_complete_path %>
+      <%= form_with model: @order, url: orders_thanks_path, method: :post do |f| %>
+        <%= f.hidden_field :method_of_payment %>
+        <%= f.hidden_field :postal_code %>
+        <%= f.hidden_field :address %>
+        <%= f.hidden_field :address_name %>
+        <%= f.hidden_field :postage %>
+        <%= f.hidden_field :billing_amount %>
+        <%= f.submit "注文を確定する" %>
       <% end %>
     </div>
   </div>
