@@ -18,13 +18,13 @@
           </tr>
         </thead>
         <tbody>
-
+        <% @orders.each do |order| %>
           <tr>
-            <td>購入日時</td></td>
-            <td>購入者</td>
-            <td>注文個数</td>
+            <td><%= order.created_at.strftime('%Y/%m/%d %H:%M:%s') %></td>
+            <td><%= order.last_name %><%= customer.first_name %></td>
+            <td><%= order.cart_item.amount %></td>
           </tr>
-
+        <% end %>
         </tbody>
       </table>
     </div>

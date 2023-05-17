@@ -5,6 +5,7 @@ class Public::OrdersController < ApplicationController
 
   def confirmation
     @order = Order.new(order_params)
+    @order_id = current_customer.id
     @cart_items = current_customer.cart_items.all
     @order.postage = 800
     @order_total = @cart_items.inject(0){|sum,item| sum + item.subtotal}
@@ -42,6 +43,7 @@ class Public::OrdersController < ApplicationController
   def show
     @order = Order.find(params[:id])
     @cart_items = current_customer.cart_items
+    @order_total = @cart_items.inject(0){|sum,item| sum + item.subtotal}
   end
 
   private
