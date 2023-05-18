@@ -5,7 +5,6 @@ class Public::OrdersController < ApplicationController
 
   def confirmation
     @order = Order.new(order_params)
-    #@order.customer_id = current_customer.id
     @cart_items = current_customer.cart_items.all
     @order.postage = 800
     @order_total = @cart_items.inject(0){|sum,item| sum + item.subtotal}
@@ -29,8 +28,18 @@ class Public::OrdersController < ApplicationController
   def thanks
     @order = current_customer.orders.new(order_params)
     @order.customer_id = current_customer.id
+    @cart_items = current_customer.cart_items.all
+    @order_total = @cart_items.inject(0){|sum,item| sum + item.subtotal}
+      @cart_items.each do |cart_item|
+        @order_items = @order.order_items.new
+        @order_items.item_id = cart_item.item.id
+        @order_items.purchase_price = @order_total
+        @order_items.amount = cart_item.amount
+        @order_items.save
+      end
     if @order.save
       redirect_to '/orders/complete'
+      current_customer.cart_items.destroy_all
     else
       render :new
     end
@@ -50,5 +59,9 @@ class Public::OrdersController < ApplicationController
   private
   def order_params
     params.require(:order).permit(:method_of_payment, :postal_code, :address, :address_name, :postage, :billing_amount)
+  end
+
+  def order_item_params
+    params.require(:order_item).permit(:purchase_price, :amount)
   end
 end
