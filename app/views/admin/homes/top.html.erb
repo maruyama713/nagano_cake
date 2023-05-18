@@ -20,9 +20,9 @@
         <tbody>
         <% @orders.each do |order| %>
           <tr>
-            <td><%= order.created_at.strftime('%Y/%m/%d %H:%M:%s') %></td>
-            <td><%= order.last_name %><%= customer.first_name %></td>
-            <td><%= order.cart_item.amount %></td>
+            <td><%= link_to order.created_at.strftime('%Y/%m/%d %H:%M:%S'), "/admin/orders/#{order.id}" %></td>
+            <td><%#= customer.last_name %><%#= customer.first_name %></td>
+            <td><%#= order.amount %></td>
           </tr>
         <% end %>
         </tbody>

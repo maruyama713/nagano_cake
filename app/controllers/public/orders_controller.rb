@@ -5,7 +5,7 @@ class Public::OrdersController < ApplicationController
 
   def confirmation
     @order = Order.new(order_params)
-    @order_id = current_customer.id
+    #@order.customer_id = current_customer.id
     @cart_items = current_customer.cart_items.all
     @order.postage = 800
     @order_total = @cart_items.inject(0){|sum,item| sum + item.subtotal}
@@ -28,6 +28,7 @@ class Public::OrdersController < ApplicationController
 
   def thanks
     @order = current_customer.orders.new(order_params)
+    @order.customer_id = current_customer.id
     if @order.save
       redirect_to '/orders/complete'
     else
