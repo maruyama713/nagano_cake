@@ -12,19 +12,20 @@
       <table>
         <tr>
           <td>購入者</td>
-          <td><%= link_to @customer.last_name @customer.first_name, "admin/customers#{@customer.id}" %></td>
+          <td><%= link_to "#{@customer.last_name} #{@customer.first_name}", "admin/customers#{@customer.id}" %></td>
         </tr>
         <tr>
           <td>注文日</td>
-          <td><%= @customer.order.created_at.strftime('%Y/%m/%d') %></td>
+          <td><%= @order.created_at.strftime('%Y/%m/%d') %></td>
         </tr>
         <tr>
           <td>配送先</td>
-          <td></td>
+          <td>〒<%= @order.postal_code %><%= @order.address %><br>
+              <%= @order.address_name %></td>
         </tr>
         <tr>
           <td>支払方法</td>
-          <td></td>
+          <td><%= @order.method_of_payment_i18n %></td>
         </tr>
       </table>
     </div>
@@ -42,18 +43,18 @@
           <th>小計</th>
         </thead>
         <tbody>
-        <% @cart_item.each do |cart_item| %>
+        <% @order_items.each do |order_item| %>
           <tr>
-            <td><%= cart_item.name %></td>
-            <td><%= cart_item.item.with_tax_price %></td>
-            <td><%= cart_item.amount %></td>
-            <td><%= cart_item.subtotal %></td>
+            <td><%= order_item.name %></td>
+            <td><%= order_item.item.with_tax_price %></td>
+            <td><%= order_item.amount %></td>
+            <td><%= order_item.subtotal %></td>
           </tr>
         <% end %>
         </tbody>
       </table>
     </div>
-    
+
     <div class="col-md-3 offset-md-1">
       <table>
         <tr>
