@@ -34,6 +34,7 @@ class Public::OrdersController < ApplicationController
         @order_items = @order.order_items.new
         @order_items.item_id = cart_item.item.id
         @order_items.purchase_price = @order_total
+        #@order_items.purchase_price = cart_item.subtotal
         @order_items.amount = cart_item.amount
         @order_items.save
       end

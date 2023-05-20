@@ -11,20 +11,20 @@
     <div class="mr-auto">
       <table>
         <tr>
-          <td>購入者</td>
+          <td><h3>購入者</h3></td>
           <td><%= link_to "#{@customer.last_name} #{@customer.first_name}", "admin/customers#{@customer.id}" %></td>
         </tr>
         <tr>
-          <td>注文日</td>
+          <td><h3>注文日</h3></td>
           <td><%= @order.created_at.strftime('%Y/%m/%d') %></td>
         </tr>
         <tr>
-          <td>配送先</td>
+          <td><h3>配送先</h3></td>
           <td>〒<%= @order.postal_code %><%= @order.address %><br>
               <%= @order.address_name %></td>
         </tr>
         <tr>
-          <td>支払方法</td>
+          <td><h3>支払方法</h3></td>
           <td><%= @order.method_of_payment_i18n %></td>
         </tr>
       </table>
@@ -43,12 +43,12 @@
           <th>小計</th>
         </thead>
         <tbody>
-        <% @order_items.each do |order_item| %>
+        <% @order.order_items.each do |order_item| %>
           <tr>
-            <td><%= order_item.name %></td>
+            <td><%= order_item.item.name %></td>
             <td><%= order_item.item.with_tax_price %></td>
             <td><%= order_item.amount %></td>
-            <td><%= order_item.subtotal %></td>
+            <td><%= order_item.item.with_tax_price * order_item.amount %></td>
           </tr>
         <% end %>
         </tbody>
@@ -58,15 +58,15 @@
     <div class="col-md-3 offset-md-1">
       <table>
         <tr>
-          <td>商品合計</td>
-          <td><%= @order_total.round.to_s(:delimited) %></td>
+          <td><h3>商品合計</h3></td>
+          <td><%= @order_total - @order.postage %></td>
         </tr>
         <tr>
-          <td>送料</td>
+          <td><h3>送料</h3></td>
           <td><%= @order.postage %></td>
         </tr>
         <tr>
-          <td>請求金額合計</td>
+          <td><h3>請求金額合計</h3></td>
           <td><%= number_with_delimiter(@order.billing_amount) %></td>
         </tr>
       </table>

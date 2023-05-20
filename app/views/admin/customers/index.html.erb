@@ -19,14 +19,14 @@
           </tr>
         </thead>
         <tbody>
-
+        <% @customers.each do |customer| %>
           <tr>
-            <td>会員ID</td>
-            <td>氏名</td>
-            <td>メールアドレス</td>
+            <td><%= customer.id %></td>
+            <td><%= link_to "#{customer.last_name} #{customer.first_name}", "admin/customers#{customer.id}" %></td>
+            <td><%= customer.email %></td>
             <td>ステータス</td>
           </tr>
-
+        <% end %>
         </tbody>
       </table>
       <%= paginate @customers %>
