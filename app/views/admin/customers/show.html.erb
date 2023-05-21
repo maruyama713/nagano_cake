@@ -13,7 +13,7 @@
         <tbody>
           <tr>
             <td>会員ID</td>
-            <td>会員ID</td>
+            <td><%= @customer.id %></td>
           </tr>
           <tr>
             <td>氏名</td>
@@ -41,7 +41,7 @@
           </tr>
           <tr>
             <td>退会ステータス</td>
-            <td>last_name_kana</td>
+            <td><%= @customer.is_deleted ? "退会" : "有効" %></td>
           </tr>
           <tr>
             <td></td>
