@@ -10,16 +10,19 @@
   <div class="row">
     <div class="mx-auto">
       <table>
-        <% @items.each do |item| %>
-        <tr>
-          <td style="display: flex; flex-wrap: wrap;">
-            <div>画像</div>
+        <% @items.each_slice(4) do |item| %>
+        <tr style="display: flex; flex-wrap: wrap;">
+          <% item.each do |item| %>
+          <td style="flex-basis: 25%;">
+            <div><%= image_tag item.get_profile_image(100,100) %></div>
             <div><%= link_to item.name, "/items/#{item.id}" %></div>
-            <div><%= item.price %></div>
+            <div>￥<%= item.price %></div>
           </td>
+          <% end %>
         </tr>
         <% end %>
       </table>
+      <%= paginate @items %>
     </div>
   </div>
 </div>

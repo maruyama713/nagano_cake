@@ -1,7 +1,7 @@
 <div class="container px-5 px-sm-0">
   <div class="row">
     <div class="col-md-3">
-      <h3>画像</h3>
+      <%= image_tag @item.get_profile_image(100,100) %>
     </div>
 
     <div class="col-md-8 offset-md-1">
@@ -10,7 +10,7 @@
           <h4><%= @item.introduction %></h4>
         </div>
         <div>
-          <h3><%= @item.price %></h3>
+          <h3>￥<%= @item.price %>(税込)</h3>
         </div>
 
         <%= form_with model: @cart_item, url: cart_items_path do |f| %>
