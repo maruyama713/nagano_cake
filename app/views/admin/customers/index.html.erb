@@ -24,8 +24,7 @@
             <td><%= customer.id %></td>
             <td><%= link_to "#{customer.last_name} #{customer.first_name}", "/admin/customers/#{customer.id}" %></td>
             <td><%= customer.email %></td>
-            <td><%#= customer.is_deleted == "false" ? "退会" : "有効" %>
-                <%= customer.is_deleted ? "退会" : "有効" %></td>
+            <td><%= customer.is_deleted ? "退会" : "有効" %></td>
           </tr>
         <% end %>
         </tbody>
