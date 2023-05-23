@@ -46,14 +46,12 @@ class Public::OrdersController < ApplicationController
   end
 
   def index
-    @orders = Order.all
-    @cart_items = current_customer.cart_items
-
+    @orders = current_customer.orders
   end
+
   def show
     @order = Order.find(params[:id])
-    @cart_items = current_customer.cart_items
-    @order_total = @cart_items.inject(0){|sum,item| sum + item.subtotal}
+    @order_total =  @order.billing_amount
   end
 
   private
