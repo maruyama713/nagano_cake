@@ -1,15 +1,15 @@
 <div class="container">
   <div class="row">
-    <div class="mr-auto">
-      <h2>ログイン</h2>
+    <div class="mr-auto mt-4 mb-4">
+      <h3 style="background-color: #DCDCDC;">ログイン</h3>
     </div>
   </div>
 </div>
 
 <div class="container">
   <div class="row">
-    <div class="mr-auto">
-      <h4>会員の方はこちらからログイン</h4>
+    <div class="mr-auto mt-3 mb-3">
+      <h4 style="background-color: #DCDCDC;">会員の方はこちらからログイン</h4>
     </div>
   </div>
 </div>
@@ -21,16 +21,16 @@
       <table>
         <tbody>
           <tr>
-            <td>メールアドレス</td>
-            <td><%= f.email_field :email, autofocus: true, autocomplete: "email" %></td>
+            <td style="width: 300px;">メールアドレス</td>
+            <td><%= f.email_field :email, autofocus: true, autocomplete: "email", size: 30 %></td>
           </tr>
           <tr>
             <td>パスワード</td>
-            <td><%= f.password_field :password, autocomplete: "current-password" %></td>
+            <td><%= f.password_field :password, autocomplete: "current-password", size: 30 %></td>
           </tr>
           <tr>
             <td></td>
-            <td><%= f.submit "ログイン" %></td>
+            <td class=" pt-4 pb-4"><%= f.submit "ログイン", class: 'btn btn-primary' %></td>
           </tr>
         </tbody>
       </table>
@@ -41,11 +41,9 @@
 
 <div class="container">
   <div class="row">
-    <div class="mr-auto">
-      <h4>会員登録がお済みでない方</h4>
-
-      <p><%= link_to "こちら", new_customer_registration_path %> から新規登録を行ってください。</p>
-
+    <div class="mr-auto mt-3">
+      <h4 style="background-color: #DCDCDC;">会員登録がお済みでない方</h4>
+      <p class="mt-4 mb-4"><%= link_to "こちら", new_customer_registration_path %> から新規登録を行ってください。</p>
    </div>
   </div>
 </div>
