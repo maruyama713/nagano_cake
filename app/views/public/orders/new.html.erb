@@ -1,36 +1,40 @@
 <div class="container">
   <div class="row">
-    <div class="mr-auto mt-5">
-      <h3 style="background-color: #DCDCDC;">注文情報入力</h3>
+    <div class="col-3 mt-5">
+      <h3 style="background-color: #DCDCDC; text-align: center;">注文情報入力</h3>
     </div>
   </div>
 </div>
 
 <div class="container">
-  <div class="row">
-    <div class="mr-auto">
-      <h3>支払方法</h3>
-        <%= form_with model: @order, url: orders_confirmation_path do |f| %>
-        <div class="row">
-          <div class="col-6">
-            <%= f.radio_button :method_of_payment, Order.method_of_payments.key(0), checked: true %>
-            <%= f.label :method_of_payment_credit_card, Order.method_of_payments_i18n[:credit_card] %><br>
-          </div>
-        </div>
-        <div class="row">
-          <div class="col-3">
-            <%= f.radio_button :method_of_payment, Order.method_of_payments.key(1), checked: false %>
-            <%= f.label :method_of_payment_transfer, Order.method_of_payments_i18n[:transfer]%>
-          </div>
-        </div>
-      <h3 class="mt-3">お届け先</h3>
-          <%= f.radio_button :select_address, "0", checked: true %>
-          <%= f.label :select_address_my_address, Order.select_addresses_i18n[:my_address] %><br>
+  <div class="mr-auto mt-3">
+    <h3>支払方法</h3>
+  </div>
+    <%= form_with model: @order, url: orders_confirmation_path do |f| %>
+  <div class="col-6 mt-3">
+    <%= f.radio_button :method_of_payment, Order.method_of_payments.key(0), checked: true %>
+    <%= f.label :method_of_payment_credit_card, Order.method_of_payments_i18n[:credit_card] %><br>
+  </div>
+  <div class="col-6">
+    <%= f.radio_button :method_of_payment, Order.method_of_payments.key(1), checked: false %>
+    <%= f.label :method_of_payment_transfer, Order.method_of_payments_i18n[:transfer]%>
+  </div>
+  <div class="mr-auto mt-3">
+    <h3>お届け先</h3>
+  </div>
+  <div class="col-6">
+    <%= f.radio_button :select_address, "0", checked: true %>
+    <%= f.label :select_address_my_address, Order.select_addresses_i18n[:my_address] %><br>
+  </div>
+  <div class="mr-20">
             〒<%= current_customer.postal_code %><%= current_customer.address %><br>
             <%= f.hidden_field :postal_code, :value => @order.postal_code %>
             <%= f.hidden_field :address, :value => @order.address %>
             <%= f.hidden_field :address_name, :value => @order.address_name %>
             <%= current_customer.last_name %><%= current_customer.first_name %><br>
+    </div>
+
+      <div class="col-6">
           <%= f.radio_button :select_address, "1", checked: false %>
           <%= f.label :select_address_new_address,  Order.select_addresses_i18n[:new_address] %><br>
             <table>
