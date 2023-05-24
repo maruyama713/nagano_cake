@@ -26,40 +26,40 @@
     <%= f.radio_button :select_address, "0", checked: true %>
     <%= f.label :select_address_my_address, Order.select_addresses_i18n[:my_address] %><br>
   </div>
-  <div class="mr-20">
-            〒<%= current_customer.postal_code %><%= current_customer.address %><br>
-            <%= f.hidden_field :postal_code, :value => @order.postal_code %>
-            <%= f.hidden_field :address, :value => @order.address %>
-            <%= f.hidden_field :address_name, :value => @order.address_name %>
-            <%= current_customer.last_name %><%= current_customer.first_name %><br>
-    </div>
-
-      <div class="col-6">
-          <%= f.radio_button :select_address, "1", checked: false %>
-          <%= f.label :select_address_new_address,  Order.select_addresses_i18n[:new_address] %><br>
-            <table>
-              <tbody>
-                <tr>
-                  <td class="col-6">郵便番号(ハイフンなし)</td>
-                  <td class="pb-3 pl-5"><%= f.text_field :postal_code %></td>
-                </tr>
-                <tr>
-                  <td class="col-4">住所</td>
-                  <td class="pb-3 pl-5"><%= f.text_field :address %></td>
-                </tr>
-                <tr>
-                  <td class="col-4">宛名</td>
-                  <td class="pb-3 pl-5"><%= f.text_field :address_name %></td>
-                </tr>
-              </tbody>
-            </table>
-    </div>
+  <div class="col-6">
+    〒<%= current_customer.postal_code %><%= current_customer.address %><br>
+    <%= f.hidden_field :postal_code, :value => @order.postal_code %>
+    <%= f.hidden_field :address, :value => @order.address %>
+    <%= f.hidden_field :address_name, :value => @order.address_name %>
+    <%= current_customer.last_name %><%= current_customer.first_name %><br>
+  </div>
+  <div class="col-6 mt-3">
+    <%= f.radio_button :select_address, "1", checked: false %>
+    <%= f.label :select_address_new_address,  Order.select_addresses_i18n[:new_address] %><br>
+  </div>
+  <div class="mr-auto">
+    <table>
+      <tbody>
+        <tr>
+          <td class="col-3">郵便番号(ハイフンなし)</td>
+          <td class="pb-3 pl-5"><%= f.text_field :postal_code %></td>
+        </tr>
+        <tr>
+          <td class="col-3">住所</td>
+          <td class="pb-3 pl-5"><%= f.text_field :address, size: 70 %></td>
+        </tr>
+        <tr>
+          <td class="col-3">宛名</td>
+          <td class="pb-3 pl-5"><%= f.text_field :address_name %></td>
+        </tr>
+      </tbody>
+    </table>
   </div>
 </div>
 
 <div class="container">
   <div class="row">
-    <div class="mx-auto">
+    <div class="mx-auto mt-3">
       <%= f.submit "確認画面へ進む", class: "btn btn-primary" %>
       <% end %>
     </div>
