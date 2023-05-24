@@ -1,20 +1,25 @@
 <div class="container">
   <div class="row">
-    <div class="mr-auto mt-5">
-      <h1>商品一覧</h1>
+    <div class="col-4 mt-5">
+      <table>
+        <tr>
+          <td><h1>商品一覧</h1></td>
+          <td><h4>(全x件)</h4></td>
+        </tr>
+      </table>
     </div>
   </div>
 </div>
 
 <div class="container">
   <div class="row">
-    <div class="mx-auto">
-      <table>
+    <div class="col-12" style="text-align: center;">
+      <table style="width: 100%;">
         <% @items.each_slice(4) do |item| %>
         <tr style="display: flex; flex-wrap: wrap;">
           <% item.each do |item| %>
           <td style="flex-basis: 25%;">
-            <div><%= image_tag item.get_profile_image(100,100) %></div>
+            <div class="pt-5 pb-2"><%= image_tag item.get_profile_image(100,100) %></div>
             <div><%= link_to item.name, "/items/#{item.id}" %></div>
             <div>￥<%= item.price %></div>
           </td>
@@ -22,6 +27,8 @@
         </tr>
         <% end %>
       </table>
+    </div>
+    <div class=" col-12 mt-5" style="display: flex; justify-content: center;">
       <%= paginate @items %>
     </div>
   </div>

@@ -23,14 +23,16 @@
         <tbody>
         <% @cart_items.each do |cart_item| %>
           <tr>
-            <td style="vertical-align: middle;" class="col-5"><%#= image_tag @item.get_profile_image(100,100) %><%= cart_item.item.name %></td>
+            <td style="vertical-align: middle;" class="col-5">
+              <%= image_tag cart_item.item.get_profile_image(100,100) %>
+              <%= cart_item.item.name %></td>
             <td style="vertical-align: middle;" class="col-2"><%= cart_item.item.with_tax_price %></td>
             <td style="text-align: center; vertical-align: middle;"><%= form_with model: cart_item, url: cart_item_path(cart_item.id), method: :patch do |f| %>
                   <%= f.select :amount, *[1..10] %>
                   <%= f.submit '変更', class: 'btn btn-success' %>
                 <% end %></td>
             <td style="vertical-align: middle;" class="col-2"><%= cart_item.subtotal %></td>
-            <td style="text-align: center;"><%= link_to '削除する', cart_item_path(cart_item.id), method: :delete, class: 'btn btn-danger', "data-confirm" => "本当に削除しますか?" %></td>
+            <td style="text-align: center; vertical-align: middle;"><%= link_to '削除する', cart_item_path(cart_item.id), method: :delete, class: 'btn btn-danger', "data-confirm" => "本当に削除しますか?" %></td>
           </tr>
         <% end %>
         </tbody>
