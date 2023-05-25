@@ -1,18 +1,18 @@
 <div class="container">
   <div class="row">
-    <div class="mr-auto">
-      <h1>注文履歴一覧</h1>
+    <div class="col-3 mt-5">
+      <h3 style="background-color: #DCDCDC; text-align: center;">注文履歴一覧</h3>
    </div>
   </div>
 </div>
 
 <div class="container">
   <div class="row">
-    <div class="mx-auto">
-      <table class="table">
-        <thead>
+    <div class="col-12 mt-5">
+      <table style="width: 100%;" class="table">
+        <thead class="thead-light">
           <tr>
-            <th>購入日時</th>
+            <th class="col-4">購入日時</th>
             <th>購入者</th>
             <th>注文個数</th>
           </tr>
@@ -31,6 +31,8 @@
         <% end %>
         </tbody>
       </table>
+    </div>
+    <div class=" col-12 mt-2" style="display: flex; justify-content: center;">
       <%= paginate @orders %>
     </div>
   </div>

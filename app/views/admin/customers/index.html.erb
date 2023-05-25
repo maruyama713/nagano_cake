@@ -1,16 +1,16 @@
 <div class="container">
   <div class="row">
-    <div class="mr-auto">
-      <h1>会員一覧</h1>
+    <div class="col-3 mt-5">
+      <h3 style="background-color: #DCDCDC; text-align: center;">会員一覧</h3>
   </div>
   </div>
 </div>
 
 <div class="container">
   <div class="row">
-    <div class="mx-auto">
-      <table class="table">
-        <thead>
+    <div class="col-12 mt-5">
+      <table style="width: 100%;" class="table">
+        <thead class="thead-light">
           <tr>
             <th>会員ID</th>
             <th>氏名</th>
@@ -24,11 +24,15 @@
             <td><%= customer.id %></td>
             <td><%= link_to "#{customer.last_name} #{customer.first_name}", "/admin/customers/#{customer.id}" %></td>
             <td><%= customer.email %></td>
-            <td><%= customer.is_deleted ? "退会" : "有効" %></td>
+            <td><% if customer.is_deleted %>退会
+                <% else %><span style="color: green;">有効</span>
+                <% end %></td>
           </tr>
         <% end %>
         </tbody>
       </table>
+    </div>
+    <div class=" col-12 mt-2" style="display: flex; justify-content: center;">
       <%= paginate @customers %>
     </div>
   </div>

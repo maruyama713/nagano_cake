@@ -1,36 +1,38 @@
 <div class="container">
   <div class="row">
-    <div class="mr-auto">
-      <h1>商品詳細</h1>
+    <div class="col-3 mt-5">
+      <h3 style="background-color: #DCDCDC; text-align: center;">商品詳細</h3>
     </div>
   </div>
 </div>
 
-<div class="container px-5 px-sm-0">
+<div class="container">
   <div class="row">
-    <div class="col-md-3">
+    <div class="col-5 mt-5">
       <%= image_tag @item.get_profile_image(100,100) %>
     </div>
 
-    <div class="col-md-8 offset-md-1">
+    <div class="col-7 mt-5">
       <table>
         <tbody>
           <tr>
-            <th>商品名</th>
-            <th><%= @item.name %></th>
+            <th class="pr-5 pb-3">商品名</th>
+            <th class="pb-3"><%= @item.name %></th>
           </tr>
           <tr>
-            <th>商品説明</th>
-            <th><%= @item.introduction %></th>
+            <th class="pr-5 pb-3">商品説明</th>
+            <th class="pb-3"><%= @item.introduction %></th>
           </tr>
           <tr>
-            <th>税込価格<br>
-            （税抜き価格）</th>
-            <th><%= @item.price %>(<%= @item.price %>)円</th>
+            <th class="pr-5 pb-3">税込価格<br>
+            (税抜き価格)</th>
+            <th class="pb-3"><%= @item.with_tax_price %>(<%= @item.price %>)円</th>
           </tr>
         </tbody>
       </table>
-      <%= link_to "編集する",  edit_admin_item_path %>
+      <div class="col-8 mt-5">
+        <%= link_to "編集する",  edit_admin_item_path, class: 'btn btn-success' %>
+      </div>
     </div>
   </div>
 </div>

@@ -21,7 +21,7 @@
           <td style="flex-basis: 25%;">
             <div class="pt-5 pb-2"><%= image_tag item.get_profile_image(100,100) %></div>
             <div><%= link_to item.name, "/items/#{item.id}" %></div>
-            <div>￥<%= item.price %></div>
+            <div>￥<%= item.with_tax_price %></div>
           </td>
           <% end %>
         </tr>
