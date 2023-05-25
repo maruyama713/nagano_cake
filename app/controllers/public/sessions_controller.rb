@@ -5,10 +5,12 @@ class Public::SessionsController < Devise::SessionsController
   before_action :customer_state, only: [:create]
 
   def after_sign_in_path_for(resource)
+    flash[:notice] = "ようこそ、#{resource.last_name}さん！"
     customers_my_page_path
   end
 
   def after_sign_out_path_for(resource)
+    flash[:notice] = "ログアウトしました"
     root_path
   end
 
@@ -36,6 +38,8 @@ class Public::SessionsController < Devise::SessionsController
       redirect_to new_customer_registration_path
     end
   end
+
+
 
   # If you have extra params to permit, append them to the sanitizer.
   # def configure_sign_in_params

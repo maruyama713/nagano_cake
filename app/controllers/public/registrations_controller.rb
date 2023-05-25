@@ -61,12 +61,14 @@ class Public::RegistrationsController < Devise::RegistrationsController
   # def after_inactive_sign_up_path_for(resource)
   #   super(resource)
   # end
-  
+
   def after_sign_in_path_for(resource)
+    flash[:notice] = "ようこそ、#{resource.last_name}さん！"
     customers_my_page_path
   end
 
   def after_sign_out_path_for(resource)
+    flash[:notice] = "ログアウトしました"
     root_path
   end
 
@@ -82,4 +84,6 @@ class Public::RegistrationsController < Devise::RegistrationsController
   devise_parameter_sanitizer.permit(:sign_up,keys:[:telephone_number])
   devise_parameter_sanitizer.permit(:sign_up,keys:[:is_deleted])
   end
+
+
 end

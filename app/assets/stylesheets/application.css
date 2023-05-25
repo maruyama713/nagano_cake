@@ -13,3 +13,6 @@
  *= require_tree .
  *= require_self
  */
+.nav-link.text-black {
+  color: black; /* テキストの色を黒に設定する */
+}
