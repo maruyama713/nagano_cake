@@ -1,19 +1,19 @@
 <div class="container">
   <div class="row">
-    <div class="mr-auto">
-      <h1>商品一覧</h1>
+    <div class="col-3 mt-5">
+      <h3 style="background-color: #DCDCDC; text-align: center;">商品一覧</h3>
     </div>
-    <div class="ml-auto">
-      <%= link_to "商品新規登録", new_admin_item_path %>
+    <div class="ml-auto mt-5">
+      <%= link_to new_admin_item_path do%><i class="fas fa-plus fa-3x"></i><% end %>
     </div>
   </div>
 </div>
 
 <div class="container">
   <div class="row">
-    <div class="mx-auto">
-      <table>
-        <thead>
+    <div class="col-12 mt-5">
+      <table style="width: 100%;" class="table table-bordered">
+        <thead class="thead-light">
           <tr>
             <th>商品ID</th>
             <th>商品名</th>
@@ -30,7 +30,9 @@
           <% end %>
         </tbody>
       </table>
+    </div>
+    <div class=" col-12 mt-2" style="display: flex; justify-content: center;">
       <%= paginate @items %>
-   </div>
+    </div>
   </div>
 </div>
