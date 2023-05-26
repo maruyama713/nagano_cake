@@ -12,7 +12,7 @@
       <table>
         <tr>
           <td class="col-4 pb-3 pl-0"><h3>購入者</h3></td>
-          <td class="pb-3 pl-5"><h4><%= link_to "#{@customer.last_name} #{@customer.first_name}", "admin/customers#{@customer.id}" %></h4></td>
+          <td class="pb-3 pl-5"><h4><%= link_to "#{@order.customer.last_name} #{@order.customer.first_name}", "admin/customers#{@order.customer.id}" %></h4></td>
         </tr>
         <tr>
           <td class="pb-3"><h3>注文日</h3></td>
